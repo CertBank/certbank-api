@@ -43,8 +43,8 @@ export class QuestionsEntity extends SoftDeletableEntity {
    * @description 문항의 지문 내용이 담긴 텍스트입니다.
    * @type {string}
    */
-  @Property({ type: 'text', fieldName: 'question_text' })
-  questionText!: string;
+  @Property({ type: 'text', fieldName: 'content' })
+  content!: string;
 
   /**
    * 추가 지문 사용 여부
@@ -53,18 +53,18 @@ export class QuestionsEntity extends SoftDeletableEntity {
    * @default YNEnum.NO
    */
   @Enum(() => YNEnum)
-  @Property({ type: 'enum', fieldName: 'question_sub_text_use_yn', default: YNEnum.NO })
-  questionSubTextUseYn: YNEnum = YNEnum.NO;
+  @Property({ type: 'enum', fieldName: 'sub_content_use_yn', default: YNEnum.NO })
+  subContentUseYn: YNEnum = YNEnum.NO;
 
   /**
    * 문제 부제목
    * @description 지문에 대한 추가 설명입니다.
-   * questionSubTextUseYn이 'Y'일 때만 사용됩니다.
+   * subContentUseYn이 'Y'일 때만 사용됩니다.
    * @type {string | null}
    * @nullable true
    */
-  @Property({ type: 'text', fieldName: 'question_sub_text', nullable: true })
-  questionSubText?: string;
+  @Property({ type: 'text', fieldName: 'sub_content', nullable: true })
+  subContent?: string;
 
   /**
    * 객관식 복수 선택 옵션 사용 여부
@@ -73,8 +73,8 @@ export class QuestionsEntity extends SoftDeletableEntity {
    * @default YNEnum.NO
    */
   @Enum(() => YNEnum)
-  @Property({ type: 'enum', fieldName: 'question_multiple_options_use_yn', default: YNEnum.NO })
-  questionMultipleOptionsUseYn: YNEnum = YNEnum.NO;
+  @Property({ type: 'enum', fieldName: 'multiple_options_use_yn', default: YNEnum.NO })
+  multipleOptionsUseYn: YNEnum = YNEnum.NO;
 
   /**
    * 선지 최대 선택 개수
@@ -82,6 +82,6 @@ export class QuestionsEntity extends SoftDeletableEntity {
    * @type {number}
    * @default 1
    */
-  @Property({ type: 'tinyint', fieldName: 'question_multiple_option_cnt', default: 1 })
-  questionMultipleOptionCnt: number = 1;
+  @Property({ type: 'tinyint', fieldName: 'multiple_option_cnt', default: 1 })
+  multipleOptionCnt: number = 1;
 }

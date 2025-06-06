@@ -23,7 +23,7 @@ export class QuestionsEntity extends SoftDeletableEntity {
 
   /**
    * 문항 지문
-   * @description 실제 문항의 지문 내용이 담긴 텍스트입니다.
+   * @description 문항의 지문 내용이 담긴 텍스트입니다.
    * @type {string}
    */
   @Property({ type: 'varchar', fieldName: 'question_text' })
@@ -65,6 +65,6 @@ export class QuestionsEntity extends SoftDeletableEntity {
    * @type {number}
    * @default 1
    */
-  @Property({ type: 'integer', fieldName: 'question_multiple_max_cnt', default: 1 })
-  questionMultipleMaxCnt: number = 1;
+  @Property({ type: 'integer', fieldName: 'question_multiple_option_cnt', default: 1 })
+  questionMultipleOptionCnt: number = 1;
 }

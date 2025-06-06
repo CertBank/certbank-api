@@ -7,6 +7,8 @@
   "license": "UNLICENSED",
   "scripts": {
     "build": "nest build",
+    "db:schema:create": "yarn build && mikro-orm schema:create --run --config dist/config/mikro-orm.config.js",
+    "db:schema:update": "yarn build && mikro-orm schema:update --run --config dist/config/mikro-orm.config.js",
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
     "start": "nest start",
     "start:dev": "nest start --watch",
@@ -32,6 +34,7 @@
     "@nestjs/platform-express": "^11.1.3",
     "class-transformer": "^0.5.1",
     "class-validator": "^0.14.2",
+    "dotenv": "^16.5.0",
     "pg": "^8.16.0",
     "reflect-metadata": "^0.2.2",
     "rxjs": "^7.8.1",

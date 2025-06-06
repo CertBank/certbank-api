@@ -21,7 +21,7 @@ export class QuestionSetsEntity extends SoftDeletableEntity {
    * 문제 세트 설명/메모
    * @description 문제 세트에 대한 상세 설명이나 특이사항을 기록합니다.
    * @type {string | null}
-   * @nullable
+   * @nullable true
    */
   @Property({ type: 'varchar', fieldName: 'question_set_memo', nullable: true })
   questionSetMemo?: string;
@@ -31,6 +31,6 @@ export class QuestionSetsEntity extends SoftDeletableEntity {
    * @description 문제를 제공한 기관이나 출처를 기록합니다.
    * @type {string}
    */
-  @Property({ type: 'varchar' })
+  @Property({ type: 'varchar', fieldName: 'provider' })
   provider!: string;
 }

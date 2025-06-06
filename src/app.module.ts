@@ -9,7 +9,7 @@ import { MIKRO_ORM_CONFIG } from './config/mikro-orm.config';
       isGlobal: true,
       envFilePath: ['.env'],
     }),
-    MikroOrmModule.forRootAsync(MIKRO_ORM_CONFIG)
+    MikroOrmModule.forRootAsync(MIKRO_ORM_CONFIG),
   ],
   controllers: [],
   providers: [],

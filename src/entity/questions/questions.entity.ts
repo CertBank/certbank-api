@@ -14,7 +14,7 @@ import { YNEnum } from '../../common/constant/enum';
 @Entity({ tableName: 'questions' })
 @Check({
   expression: `(question_set_id IS NOT NULL AND question_section_id IS NULL) OR (question_set_id IS NULL AND question_section_id IS NOT NULL)`,
-  name: 'chk_questions_parent',
+  name: 'questions_parent_check',
 })
 @Index({ properties: ['questionSet'] })
 @Index({ properties: ['questionSection'] })

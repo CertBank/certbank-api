@@ -26,7 +26,7 @@ export class QuestionsEntity extends SoftDeletableEntity {
    * @description 문항의 지문 내용이 담긴 텍스트입니다.
    * @type {string}
    */
-  @Property({ type: 'varchar', fieldName: 'question_text' })
+  @Property({ type: 'text', fieldName: 'question_text' })
   questionText!: string;
 
   /**
@@ -46,7 +46,7 @@ export class QuestionsEntity extends SoftDeletableEntity {
    * @type {string | null}
    * @nullable
    */
-  @Property({ type: 'varchar', fieldName: 'question_sub_text', nullable: true })
+  @Property({ type: 'text', fieldName: 'question_sub_text', nullable: true })
   questionSubText?: string;
 
   /**

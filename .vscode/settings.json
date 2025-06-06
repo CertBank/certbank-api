@@ -4,7 +4,17 @@
     "**/.pnp.*": true
   },
   "eslint.nodePath": ".yarn/sdks",
-  "prettier.prettierPath": ".yarn/sdks/prettier/index.cjs",
   "typescript.tsdk": ".yarn/sdks/typescript/lib",
-  "typescript.enablePromptUseWorkspaceTsdk": true
+  "prettier.prettierPath": ".yarn/sdks/prettier/index.cjs",
+  "editor.formatOnSave": true,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "typescript.enablePromptUseWorkspaceTsdk": true,
+  "eslint.enable": true,
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": "explicit"
+  },
+  "editor.tokenColorCustomizations": {
+    "comments": "#ea9067"
+  },
+  "typescript.preferences.importModuleSpecifier": "relative"
 }

@@ -11,7 +11,7 @@ import { UsersEntity } from '../users/users.entity';
  * @table discussions
  */
 @Entity({ tableName: 'discussions' })
-@Index({ properties: ['questions', 'createdAt'] })
+@Index({ properties: ['question', 'createdAt'] })
 export class DiscussionsEntity extends SoftDeletableEntity {
   /**
    * 문항 참조
@@ -19,7 +19,7 @@ export class DiscussionsEntity extends SoftDeletableEntity {
    * @type {QuestionsEntity}
    */
   @ManyToOne(() => QuestionsEntity)
-  questions!: QuestionsEntity;
+  question!: QuestionsEntity;
 
   /**
    * 작성자 참조
@@ -27,7 +27,7 @@ export class DiscussionsEntity extends SoftDeletableEntity {
    * @type {User}
    */
   @ManyToOne(() => UsersEntity)
-  users!: UsersEntity;
+  user!: UsersEntity;
 
   /**
    * 토의 내용

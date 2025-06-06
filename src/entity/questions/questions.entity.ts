@@ -65,6 +65,6 @@ export class QuestionsEntity extends SoftDeletableEntity {
    * @type {number}
    * @default 1
    */
-  @Property({ type: 'integer', fieldName: 'question_multiple_option_cnt', default: 1 })
+  @Property({ type: 'tinyint', fieldName: 'question_multiple_option_cnt', default: 1 })
   questionMultipleOptionCnt: number = 1;
 }

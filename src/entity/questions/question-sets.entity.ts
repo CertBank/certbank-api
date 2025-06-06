@@ -1,5 +1,6 @@
-import { Entity, Property } from '@mikro-orm/core';
+import { Entity, ManyToOne, Property } from '@mikro-orm/core';
 import { SoftDeletableEntity } from '../base.entity';
+import { ProvidersEntity } from '../providers/providers.entity';
 
 /**
  * 문제 세트 엔티티
@@ -9,6 +10,14 @@ import { SoftDeletableEntity } from '../base.entity';
  */
 @Entity({ tableName: 'question_sets' })
 export class QuestionSetsEntity extends SoftDeletableEntity {
+  /**
+   * 문제 제공자 참조
+   * @description 이 문제 세트를 제공한 기관이나 출처를 참조합니다.
+   * @type {ProvidersEntity}
+   */
+  @ManyToOne(() => ProvidersEntity)
+  provider!: ProvidersEntity;
+
   /**
    * 문제 세트 이름
    * @description 문제 세트의 명칭을 저장합니다.
@@ -25,12 +34,4 @@ export class QuestionSetsEntity extends SoftDeletableEntity {
    */
   @Property({ type: 'varchar', fieldName: 'question_set_memo', nullable: true })
   questionSetMemo?: string;
-
-  /**
-   * 문제 제공자/출처
-   * @description 문제를 제공한 기관이나 출처를 기록합니다.
-   * @type {string}
-   */
-  @Property({ type: 'varchar', fieldName: 'provider' })
-  provider!: string;
 }

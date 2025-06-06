@@ -2,7 +2,7 @@ import { Check, Entity, Enum, Index, ManyToOne, Property } from '@mikro-orm/core
 import { BaseEntity } from '../base.entity';
 import { DiscussionsEntity } from './discussions.entity';
 import { UsersEntity } from '../users/users.entity';
-import { ReportReasonEnum } from '../../common/constant/enum';
+import { ReportReasonEnum } from '../../common/constants/enum';
 import { DiscussionCommentsEntity } from './discussion-comments.entity';
 
 /**

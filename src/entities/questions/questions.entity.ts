@@ -2,7 +2,7 @@ import { Check, Entity, Enum, Index, ManyToOne, Property } from '@mikro-orm/core
 import { SoftDeletableEntity } from '../base.entity';
 import { QuestionSetsEntity } from './question-sets.entity';
 import { QuestionSectionsEntity } from './question-sections.entity';
-import { YNEnum } from '../../common/constant/enum';
+import { YNEnum } from '../../common/constants/enum';
 
 /**
  * 문항 엔티티

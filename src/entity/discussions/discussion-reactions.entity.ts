@@ -3,7 +3,7 @@ import { BaseEntity } from '../base.entity';
 import { UsersEntity } from '../users/users.entity';
 import { DiscussionsEntity } from './discussions.entity';
 import { ReactionTypeEnum } from '../../common/constant/enum';
-import { DiscussionCommentEntity } from './discussion-comments.entity';
+import { DiscussionCommentsEntity } from './discussion-comments.entity';
 
 /**
  * 토의 반응 엔티티
@@ -15,7 +15,7 @@ import { DiscussionCommentEntity } from './discussion-comments.entity';
 @Entity({ tableName: 'discussion_reactions' })
 @Index({ properties: ['discussions', 'reactionType'] })
 @Index({ properties: ['discussionComments', 'reactionType'] })
-export class DiscussionReactionEntity extends BaseEntity {
+export class DiscussionReactionsEntity extends BaseEntity {
   /**
    * 토의 참조 (선택적)
    * @description 반응이 달린 토의를 참조합니다.
@@ -31,8 +31,8 @@ export class DiscussionReactionEntity extends BaseEntity {
    * @type {DiscussionCommentEntity}
    * @nullable true
    */
-  @ManyToOne(() => DiscussionCommentEntity, { nullable: true })
-  discussionComments?: DiscussionCommentEntity;
+  @ManyToOne(() => DiscussionCommentsEntity, { nullable: true })
+  discussionComments?: DiscussionCommentsEntity;
 
   /**
    * 사용자 참조

@@ -1,7 +1,6 @@
-import { Entity, Enum, ManyToOne, Property } from '@mikro-orm/core';
+import { Entity, ManyToOne, Property } from '@mikro-orm/core';
 import { BaseEntity } from '../base.entity';
 import { QuestionsEntity } from './questions.entity';
-import { YNEnum } from '../../common/constant/enum';
 
 /**
  * 선지 엔티티
@@ -26,7 +25,7 @@ export class QuestionOptionsEntity extends BaseEntity {
    * @description 선지의 번호가 담긴 텍스트입니다.
    * @type {string}
    */
-  @Property({ type: 'varchar', fieldName: 'question_option_no' })
+  @Property({ type: 'varchar', length: 10, fieldName: 'question_option_no' })
   questionOptionNo!: string;
 
   /**
@@ -34,6 +33,6 @@ export class QuestionOptionsEntity extends BaseEntity {
    * @description 선지의 내용이 담긴 텍스트입니다.
    * @type {string}
    */
-  @Property({ type: 'varchar', fieldName: 'question_option_text' })
+  @Property({ type: 'text', fieldName: 'question_option_text' })
   questionOptionText!: string;
 }

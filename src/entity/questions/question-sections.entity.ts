@@ -20,12 +20,12 @@ export class QuestionSectionsEntity extends SoftDeletableEntity {
   questionSet!: QuestionSetsEntity;
 
   /**
-   * 섹션 이름
+   * 섹션 명칭
    * @description 섹션의 제목이나 챕터명입니다.
    * @type {string}
    */
-  @Property({ type: 'varchar', fieldName: 'section_name' })
-  sectionName!: string;
+  @Property({ type: 'varchar', fieldName: 'section_title' })
+  sectionTitle!: string;
 
   /**
    * 섹션 설명

@@ -16,17 +16,8 @@ export class UsersEntity extends SoftDeletableEntity {
    * @type {string}
    * @unique true
    */
-  @Property({ type: 'varchar', length: 100, fieldName: 'user_email', unique: true })
-  userEmail!: string;
-
-  /**
-   * 표시 이름 (닉네임)
-   * @description 커뮤니티에서 표시될 사용자명입니다.
-   * @type {string}
-   * @unique true
-   */
-  @Property({ type: 'varchar', length: 30, fieldName: 'user_name', unique: true })
-  userName?: string;
+  @Property({ type: 'varchar', length: 100, fieldName: 'email', unique: true })
+  email!: string;
 
   /**
    * 비밀번호 해시
@@ -39,11 +30,20 @@ export class UsersEntity extends SoftDeletableEntity {
   passwordHash?: string;
 
   /**
+   * 사용자명 (닉네임)
+   * @description 커뮤니티에서 표시될 사용자명입니다.
+   * @type {string}
+   * @unique true
+   */
+  @Property({ type: 'varchar', length: 30, fieldName: 'profile_name', unique: true })
+  profileName?: string;
+
+  /**
    * 프로필 이미지 URL
    * @description 사용자의 프로필 이미지 경로 또는 URL입니다.
    * @type {string | null}
    * @nullable true
    */
-  @Property({ type: 'varchar', length: 500, fieldName: 'user_image_url', nullable: true })
-  userImageUrl?: string;
+  @Property({ type: 'varchar', length: 500, fieldName: 'profile_image_url', nullable: true })
+  profileImageUrl?: string;
 }

@@ -1,24 +1,42 @@
-import { Entity, Enum, ManyToOne, Property } from '@mikro-orm/core';
+import { Check, Entity, Enum, Index, ManyToOne, Property } from '@mikro-orm/core';
 import { SoftDeletableEntity } from '../base.entity';
 import { QuestionSetsEntity } from './question-sets.entity';
+import { QuestionSectionsEntity } from './question-sections.entity';
 import { YNEnum } from '../../common/constant/enum';
 
 /**
  * 문항 엔티티
  * @description 문항의 지문과 설정 정보를 관리하는 엔티티입니다.
- * 문제 세트(question_sets)에 속하는 각각의 문항을 나타냅니다.
+ * 문제 섹션 또는 문제 세트에 직접 속할 수 있습니다.
  * @entity
  * @table questions
  */
 @Entity({ tableName: 'questions' })
+@Check({
+  expression: `(question_set_id IS NOT NULL AND question_section_id IS NULL) OR (question_set_id IS NULL AND question_section_id IS NOT NULL)`,
+  name: 'chk_questions_parent',
+})
+@Index({ properties: ['questionSet'] })
+@Index({ properties: ['questionSection'] })
 export class QuestionsEntity extends SoftDeletableEntity {
   /**
-   * 문제 세트 참조
-   * @description 이 문항이 속한 문제 세트를 참조합니다.
+   * 문제 세트 참조 (선택적)
+   * @description 이 문항이 직접 속한 문제 세트를 참조합니다.
+   * 섹션이 없는 경우에만 사용됩니다.
    * @type {QuestionSetsEntity}
+   * @nullable true
    */
-  @ManyToOne(() => QuestionSetsEntity)
-  questionSet!: QuestionSetsEntity;
+  @ManyToOne(() => QuestionSetsEntity, { nullable: true })
+  questionSet?: QuestionSetsEntity;
+
+  /**
+   * 문제 섹션 참조 (선택적)
+   * @description 이 문항이 속한 문제 섹션을 참조합니다.
+   * @type {QuestionSectionsEntity}
+   * @nullable true
+   */
+  @ManyToOne(() => QuestionSectionsEntity, { nullable: true })
+  questionSection?: QuestionSectionsEntity;
 
   /**
    * 문항 지문

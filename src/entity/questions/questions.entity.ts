@@ -16,7 +16,6 @@ export class QuestionsEntity extends SoftDeletableEntity {
    * 문제 세트 참조
    * @description 이 문항이 속한 문제 세트를 참조합니다.
    * @type {QuestionSetsEntity}
-   * @relation ManyToOne - 하나의 문제 세트에 여러 문항이 속할 수 있습니다.
    */
   @ManyToOne(() => QuestionSetsEntity)
   questionSet!: QuestionSetsEntity;
@@ -36,7 +35,7 @@ export class QuestionsEntity extends SoftDeletableEntity {
    * @default YNEnum.NO
    */
   @Enum(() => YNEnum)
-  @Property({ fieldName: 'question_sub_text_use_yn', default: YNEnum.NO })
+  @Property({ type: 'enum', fieldName: 'question_sub_text_use_yn', default: YNEnum.NO })
   questionSubTextUseYn: YNEnum = YNEnum.NO;
 
   /**
@@ -44,7 +43,7 @@ export class QuestionsEntity extends SoftDeletableEntity {
    * @description 지문에 대한 추가 설명입니다.
    * questionSubTextUseYn이 'Y'일 때만 사용됩니다.
    * @type {string | null}
-   * @nullable
+   * @nullable true
    */
   @Property({ type: 'text', fieldName: 'question_sub_text', nullable: true })
   questionSubText?: string;
@@ -56,7 +55,7 @@ export class QuestionsEntity extends SoftDeletableEntity {
    * @default YNEnum.NO
    */
   @Enum(() => YNEnum)
-  @Property({ fieldName: 'question_multiple_options_use_yn', default: YNEnum.NO })
+  @Property({ type: 'enum', fieldName: 'question_multiple_options_use_yn', default: YNEnum.NO })
   questionMultipleOptionsUseYn: YNEnum = YNEnum.NO;
 
   /**

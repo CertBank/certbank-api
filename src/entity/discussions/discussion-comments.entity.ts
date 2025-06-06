@@ -34,6 +34,6 @@ export class DiscussionCommentsEntity extends SoftDeletableEntity {
    * @description 댓글의 텍스트 내용입니다.
    * @type {string}
    */
-  @Property({ type: 'text', fieldName: 'content' })
-  content!: string;
+  @Property({ type: 'text', fieldName: 'comment_content' })
+  commentContent!: string;
 }

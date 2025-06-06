@@ -9,6 +9,7 @@
     "build": "nest build",
     "db:schema:create": "yarn build && mikro-orm schema:create --run --config dist/config/mikro-orm.config.js",
     "db:schema:update": "yarn build && mikro-orm schema:update --run --config dist/config/mikro-orm.config.js",
+    "db:schema:drop": "yarn build && mikro-orm schema:drop --run --config dist/config/mikro-orm.config.js",
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
     "start": "nest start",
     "start:dev": "nest start --watch",

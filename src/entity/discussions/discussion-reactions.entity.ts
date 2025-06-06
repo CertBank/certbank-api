@@ -15,7 +15,7 @@ import { DiscussionCommentsEntity } from './discussion-comments.entity';
 @Entity({ tableName: 'discussion_reactions' })
 @Check({
   expression: `(discussion_id IS NOT NULL AND discussion_comment_id IS NULL) OR (discussion_id IS NULL AND discussion_comment_id IS NOT NULL)`,
-  name: 'chk_reactions_target',
+  name: 'discussion_reactions_parent_check',
 })
 @Index({ properties: ['discussion', 'reactionType'] })
 @Index({ properties: ['discussionComment', 'reactionType'] })

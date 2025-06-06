@@ -13,7 +13,6 @@ export class QuestionSetsEntity extends SoftDeletableEntity {
    * 문제 세트 이름
    * @description 문제 세트의 명칭을 저장합니다.
    * @type {string}
-   * @example "SQLD"
    */
   @Property({ type: 'varchar', fieldName: 'question_set_name' })
   questionSetName!: string;
@@ -23,7 +22,6 @@ export class QuestionSetsEntity extends SoftDeletableEntity {
    * @description 문제 세트에 대한 상세 설명이나 특이사항을 기록합니다.
    * @type {string | null}
    * @nullable
-   * @example "2024년 개정"
    */
   @Property({ type: 'varchar', fieldName: 'question_set_memo', nullable: true })
   questionSetMemo?: string;
@@ -32,7 +30,6 @@ export class QuestionSetsEntity extends SoftDeletableEntity {
    * 문제 제공자/출처
    * @description 문제를 제공한 기관이나 출처를 기록합니다.
    * @type {string}
-   * @example "한국데이터산업진흥원"
    */
   @Property({ type: 'varchar' })
   provider!: string;

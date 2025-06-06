@@ -1,4 +1,4 @@
-import { Entity, Enum, Index, ManyToOne, Property } from '@mikro-orm/core';
+import { Check, Entity, Enum, Index, ManyToOne, Property } from '@mikro-orm/core';
 import { BaseEntity } from '../base.entity';
 import { DiscussionsEntity } from './discussions.entity';
 import { UsersEntity } from '../users/users.entity';
@@ -13,6 +13,10 @@ import { DiscussionCommentsEntity } from './discussion-comments.entity';
  * @table discussion_reports
  */
 @Entity({ tableName: 'discussion_reports' })
+@Check({
+  expression: `(discussions_id IS NOT NULL AND discussion_comments_id IS NULL) OR (discussions_id IS NULL AND discussion_comments_id IS NOT NULL)`,
+  name: 'chk_reports_target',
+})
 @Index({ properties: ['discussions', 'reportReason'] })
 @Index({ properties: ['discussionComments', 'reportReason'] })
 export class DiscussionReportsEntity extends BaseEntity {

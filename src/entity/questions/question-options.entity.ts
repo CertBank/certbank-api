@@ -17,7 +17,7 @@ export class QuestionOptionsEntity extends BaseEntity {
    * @type {QuestionsEntity}
    */
   @ManyToOne(() => QuestionsEntity)
-  questions!: QuestionsEntity;
+  question!: QuestionsEntity;
 
   /**
    * 선지 번호

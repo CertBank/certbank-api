@@ -15,7 +15,6 @@ export class QuestionOptionsEntity extends BaseEntity {
    * 문항 참조
    * @description 이 선지가 속한 문항을 참조합니다.
    * @type {QuestionsEntity}
-   * @relation ManyToOne - 하나의 문항에 여러 선지가 속할 수 있습니다.
    */
   @ManyToOne(() => QuestionsEntity)
   questions!: QuestionsEntity;

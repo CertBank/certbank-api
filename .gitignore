@@ -28,7 +28,6 @@ lerna-debug.log*
 .settings/
 *.sublime-workspace
 
-
 # IDE - VSCode
 .vscode/*
 !.vscode/settings.json
@@ -62,6 +61,7 @@ report.[0-9]*.[0-9]*.[0-9]*.[0-9]*.json
 
 # Yarn Berry - cache, patches, plugins, releases, versions
 .yarn/*
+.yarn/install-state.gz
 !.yarn/cache
 !.yarn/patches
 !.yarn/plugins

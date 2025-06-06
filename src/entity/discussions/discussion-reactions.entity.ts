@@ -14,11 +14,11 @@ import { DiscussionCommentsEntity } from './discussion-comments.entity';
  */
 @Entity({ tableName: 'discussion_reactions' })
 @Check({
-  expression: `(discussions_id IS NOT NULL AND discussion_comments_id IS NULL) OR (discussions_id IS NULL AND discussion_comments_id IS NOT NULL)`,
+  expression: `(discussion_id IS NOT NULL AND discussion_comment_id IS NULL) OR (discussion_id IS NULL AND discussion_comment_id IS NOT NULL)`,
   name: 'chk_reactions_target',
 })
-@Index({ properties: ['discussions', 'reactionType'] })
-@Index({ properties: ['discussionComments', 'reactionType'] })
+@Index({ properties: ['discussion', 'reactionType'] })
+@Index({ properties: ['discussionComment', 'reactionType'] })
 export class DiscussionReactionsEntity extends BaseEntity {
   /**
    * 토의 참조 (선택적)
@@ -27,7 +27,7 @@ export class DiscussionReactionsEntity extends BaseEntity {
    * @nullable true
    */
   @ManyToOne(() => DiscussionsEntity, { nullable: true })
-  discussions?: DiscussionsEntity;
+  discussion?: DiscussionsEntity;
 
   /**
    * 댓글 참조 (선택적)
@@ -36,7 +36,7 @@ export class DiscussionReactionsEntity extends BaseEntity {
    * @nullable true
    */
   @ManyToOne(() => DiscussionCommentsEntity, { nullable: true })
-  discussionComments?: DiscussionCommentsEntity;
+  discussionComment?: DiscussionCommentsEntity;
 
   /**
    * 사용자 참조
@@ -44,7 +44,7 @@ export class DiscussionReactionsEntity extends BaseEntity {
    * @type {UsersEntity}
    */
   @ManyToOne(() => UsersEntity)
-  users!: UsersEntity;
+  user!: UsersEntity;
 
   /**
    * 반응 타입

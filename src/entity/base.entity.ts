@@ -2,7 +2,8 @@ import { Filter, PrimaryKey, Property } from '@mikro-orm/core';
 
 /**
  * 모든 엔티티의 기본 클래스
- * @description 공통적으로 필요한 필드(ID, 생성시간, 수정시간)를 제공합니다. 직접 인스턴스화할 수 없으며, 상속받아서 사용해야 합니다.
+ * @description 공통적으로 필요한 필드(ID, 생성시간, 수정시간)를 제공합니다.
+ * 직접 인스턴스화할 수 없으며, 상속받아서 사용해야 합니다.
  * @abstract
  */
 export abstract class BaseEntity {
@@ -18,7 +19,6 @@ export abstract class BaseEntity {
   /**
    * 엔티티 생성 시간
    * @description 엔티티가 처음 데이터베이스에 저장될 때 자동으로 설정됩니다.
-   * 이후 수정되지 않습니다.
    * @type {Date}
    * @warning 자동으로 설정되므로 수동 변경 금지
    */
@@ -44,7 +44,8 @@ export abstract class BaseEntity {
 
 /**
  * Soft Delete 기능을 제공하는 엔티티 기본 클래스
- * @description 실제 데이터를 삭제하는 대신 deletedAt 필드를 설정하여 논리적 삭제를 구현합니다. 이를 통해 데이터 복구가 가능하고 관계 무결성을 유지할 수 있습니다.
+ * @description 실제 데이터를 삭제하는 대신 deletedAt 필드를 설정하여 논리적 삭제를 구현합니다.
+ * 이를 통해 데이터 복구가 가능하고 관계 무결성을 유지할 수 있습니다.
  * @abstract
  * @extends BaseEntity
  * @see {@link https://mikro-orm.io/docs/filters | MikroORM Filters} Global Filter 설정 필요

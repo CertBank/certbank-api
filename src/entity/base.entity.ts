@@ -60,7 +60,7 @@ export abstract class SoftDeletableEntity extends BaseEntity {
    * 논리적 삭제 시간
    * @description Date: 삭제된 시간 (논리적으로 삭제됨)
    * @type {Date | null}
-   * @nullable
+   * @nullable true
    * @warning 이 필드를 직접 조작하기보다는 별도의 유틸리티 메서드 사용 권장
    */
   @Property({

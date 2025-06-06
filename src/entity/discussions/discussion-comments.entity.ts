@@ -11,7 +11,7 @@ import { DiscussionsEntity } from './discussions.entity';
  * @table discussion_comments
  */
 @Entity({ tableName: 'discussion_comments' })
-@Index({ properties: ['discussions', 'createdAt'] })
+@Index({ properties: ['discussion', 'createdAt'] })
 export class DiscussionCommentsEntity extends SoftDeletableEntity {
   /**
    * 토의 참조
@@ -19,7 +19,7 @@ export class DiscussionCommentsEntity extends SoftDeletableEntity {
    * @type {DiscussionsEntity}
    */
   @ManyToOne(() => DiscussionsEntity)
-  discussions!: DiscussionsEntity;
+  discussion!: DiscussionsEntity;
 
   /**
    * 작성자 참조
@@ -27,7 +27,7 @@ export class DiscussionCommentsEntity extends SoftDeletableEntity {
    * @type {UsersEntity}
    */
   @ManyToOne(() => UsersEntity)
-  users!: UsersEntity;
+  user!: UsersEntity;
 
   /**
    * 댓글 내용

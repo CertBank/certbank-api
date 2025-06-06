@@ -19,19 +19,19 @@ export class QuestionSetsEntity extends SoftDeletableEntity {
   provider!: ProvidersEntity;
 
   /**
-   * 문제 세트 이름
+   * 문제 세트 명칭
    * @description 문제 세트의 명칭을 저장합니다.
    * @type {string}
    */
-  @Property({ type: 'varchar', fieldName: 'question_set_name' })
-  questionSetName!: string;
+  @Property({ type: 'varchar', fieldName: 'set_title' })
+  setTitle!: string;
 
   /**
-   * 문제 세트 설명/메모
+   * 문제 세트 설명
    * @description 문제 세트에 대한 상세 설명이나 특이사항을 기록합니다.
    * @type {string | null}
    * @nullable true
    */
-  @Property({ type: 'varchar', fieldName: 'question_set_memo', nullable: true })
-  questionSetMemo?: string;
+  @Property({ type: 'varchar', fieldName: 'set_description', nullable: true })
+  setDescription?: string;
 }

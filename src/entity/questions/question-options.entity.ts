@@ -20,18 +20,18 @@ export class QuestionOptionsEntity extends BaseEntity {
   question!: QuestionsEntity;
 
   /**
-   * 선지 번호
-   * @description 선지의 번호가 담긴 텍스트입니다.
+   * 선지 명칭
+   * @description 선지의 명칭이 담긴 텍스트입니다.
    * @type {string}
    */
-  @Property({ type: 'varchar', length: 10, fieldName: 'question_option_no' })
-  questionOptionNo!: string;
+  @Property({ type: 'varchar', length: 10, fieldName: 'option_title' })
+  optionTitle!: string;
 
   /**
    * 선지 내용
    * @description 선지의 내용이 담긴 텍스트입니다.
    * @type {string}
    */
-  @Property({ type: 'text', fieldName: 'question_option_text' })
-  questionOptionText!: string;
+  @Property({ type: 'text', fieldName: 'option_content' })
+  optionContent!: string;
 }

@@ -7,9 +7,10 @@
   "license": "UNLICENSED",
   "scripts": {
     "build": "nest build",
-    "db:schema:create": "yarn build && mikro-orm schema:create --run --config dist/config/mikro-orm.config.js",
-    "db:schema:update": "yarn build && mikro-orm schema:update --run --config dist/config/mikro-orm.config.js",
-    "db:schema:drop": "yarn build && mikro-orm schema:drop --run --config dist/config/mikro-orm.config.js",
+    "db:schema:create": "yarn build && mikro-orm schema:create --run --config dist/configs/mikro-orm.config.js",
+    "db:schema:update": "yarn build && mikro-orm schema:update --run --config dist/configs/mikro-orm.config.js",
+    "db:schema:drop": "yarn build && mikro-orm schema:drop --run --config dist/configs/mikro-orm.config.js",
+    "seed": "npm run build && mikro-orm seeder:run --config dist/configs/mikro-orm.config.js",
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
     "start": "nest start",
     "start:dev": "nest start --watch",

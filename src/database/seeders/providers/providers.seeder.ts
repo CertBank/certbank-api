@@ -4,11 +4,10 @@ import { ProvidersEntity } from '../../../entities/providers/providers.entity';
 
 export class ProvidersSeeder extends Seeder {
   async run(em: EntityManager): Promise<void> {
-    console.log('🌱 providers 시딩 시작...');
+    console.log('🌱 Providers 시딩 시작...');
 
     // 기존 데이터 삭제
     const deleteCount = await em.nativeDelete(ProvidersEntity, {});
-
     console.log(`🗑️ ${deleteCount}개의 기존 Provider 삭제 완료`);
 
     // 새 데이터 삽입

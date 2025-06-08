@@ -8,7 +8,6 @@ import { MikroOrmModuleAsyncOptions, MikroOrmModuleOptions } from '@mikro-orm/ne
  * MikroORM CLI용 설정
  * @description CLI 명령어(마이그레이션, 스키마 생성 등)에서 사용되는 MikroORM 설정입니다.
  * defineConfig를 사용하여 PostgreSQL 드라이버가 자동으로 설정됩니다.
- * @example yarn mikro-orm schema:create --run --config dist/config/mikro-orm.config.js
  */
 export default defineConfig({
   host: process.env.DATABASE_HOST,
@@ -18,6 +17,14 @@ export default defineConfig({
   dbName: process.env.DATABASE_NAME,
   entities: ['dist/**/*.entity.js'],
   entitiesTs: ['src/**/*.entity.ts'],
+  seeder: {
+    path: './dist/src/database/seeders',
+    pathTs: './src/database/seeders',
+    defaultSeeder: 'DatabaseSeeder',
+    glob: '!(*.d).{js,ts}',
+    emit: 'ts',
+    fileName: (className: string) => className,
+  },
   metadataProvider: TsMorphMetadataProvider,
   allowGlobalContext: true,
 });
@@ -40,13 +47,6 @@ export const MIKRO_ORM_CONFIG: MikroOrmModuleAsyncOptions = {
     dbName: configService.get<string>('DATABASE_NAME'),
     entities: ['dist/**/*.entity.js'],
     entitiesTs: ['src/**/*.entity.ts'],
-    migrations: {
-      path: 'dist/database/migrations',
-      pathTs: 'database/migrations',
-      tableName: 'mikro_orm_migrations',
-      transactional: true,
-    },
-    seeder: { path: 'dist/database/seeders', pathTs: 'database/seeders' },
     metadataProvider: TsMorphMetadataProvider,
     debug: true,
     allowGlobalContext: true,

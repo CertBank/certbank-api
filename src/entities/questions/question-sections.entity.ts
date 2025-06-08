@@ -1,4 +1,4 @@
-import { Entity, Index, ManyToOne, Property } from '@mikro-orm/core';
+import { Cascade, Entity, Index, ManyToOne, Property } from '@mikro-orm/core';
 import { SoftDeletableEntity } from '../base.entity';
 import { QuestionSetsEntity } from './question-sets.entity';
 
@@ -16,7 +16,9 @@ export class QuestionSectionsEntity extends SoftDeletableEntity {
    * @description 이 섹션이 속한 문제 세트를 참조합니다.
    * @type {QuestionSetsEntity}
    */
-  @ManyToOne(() => QuestionSetsEntity)
+  @ManyToOne(() => QuestionSetsEntity, {
+    cascade: [Cascade.REMOVE],
+  })
   questionSet!: QuestionSetsEntity;
 
   /**

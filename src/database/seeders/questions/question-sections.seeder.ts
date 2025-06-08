@@ -15,11 +15,6 @@ export class QuestionSectionsSeeder extends Seeder {
       setTitle: 'SQLD',
     });
 
-    // QuestionSet가 없으면 오류 처리
-    if (!sqld) {
-      console.error('❌ 필요한 QuestionSet를 찾을 수 없습니다. QuestionSet를 먼저 시딩해주세요.');
-    }
-
     // 새 데이터 삽입
     const questionSections: any[] = [
       {

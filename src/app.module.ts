@@ -1,7 +1,7 @@
 import { MikroOrmModule } from '@mikro-orm/nestjs';
 import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
-import { MIKRO_ORM_CONFIG } from './config/mikro-orm.config';
+import { MIKRO_ORM_CONFIG } from './configs/mikro-orm.config';
 
 @Module({
   imports: [

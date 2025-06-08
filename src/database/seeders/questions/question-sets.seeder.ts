@@ -16,11 +16,6 @@ export class QuestionSetsSeeder extends Seeder {
       providerName: '한국데이터산업진흥원',
     });
 
-    // Provider가 없으면 오류 처리
-    if (!kdata) {
-      console.error('❌ 필요한 Provider를 찾을 수 없습니다. Providers를 먼저 시딩해주세요.');
-    }
-
     // 새 데이터 삽입
     const questionSets: any[] = [
       {

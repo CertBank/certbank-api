@@ -1,4 +1,4 @@
-import { Entity, ManyToOne, Property } from '@mikro-orm/core';
+import { Cascade, Entity, ManyToOne, Property } from '@mikro-orm/core';
 import { BaseEntity } from '../base.entity';
 import { QuestionsEntity } from './questions.entity';
 
@@ -16,7 +16,7 @@ export class QuestionOptionsEntity extends BaseEntity {
    * @description 이 선지가 속한 문항을 참조합니다.
    * @type {QuestionsEntity}
    */
-  @ManyToOne(() => QuestionsEntity)
+  @ManyToOne(() => QuestionsEntity, { cascade: [Cascade.REMOVE] })
   question!: QuestionsEntity;
 
   /**

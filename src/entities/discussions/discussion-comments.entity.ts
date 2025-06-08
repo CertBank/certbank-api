@@ -1,4 +1,4 @@
-import { Entity, Index, ManyToOne, Property } from '@mikro-orm/core';
+import { Cascade, Entity, Index, ManyToOne, Property } from '@mikro-orm/core';
 import { SoftDeletableEntity } from '../base.entity';
 import { UsersEntity } from '../users/users.entity';
 import { DiscussionsEntity } from './discussions.entity';
@@ -18,16 +18,17 @@ export class DiscussionCommentsEntity extends SoftDeletableEntity {
    * @description 댓글이 달린 토의를 참조합니다.
    * @type {DiscussionsEntity}
    */
-  @ManyToOne(() => DiscussionsEntity)
+  @ManyToOne(() => DiscussionsEntity, { cascade: [Cascade.REMOVE] })
   discussion!: DiscussionsEntity;
 
   /**
    * 작성자 참조
    * @description 댓글을 작성한 사용자를 참조합니다.
    * @type {UsersEntity}
+   * @nullable true
    */
-  @ManyToOne(() => UsersEntity)
-  user!: UsersEntity;
+  @ManyToOne(() => UsersEntity, { nullable: true })
+  user?: UsersEntity;
 
   /**
    * 댓글 내용

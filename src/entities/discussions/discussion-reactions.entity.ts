@@ -1,4 +1,4 @@
-import { Check, Entity, Enum, Index, ManyToOne, Property } from '@mikro-orm/core';
+import { Cascade, Check, Entity, Enum, Index, ManyToOne, Property } from '@mikro-orm/core';
 import { BaseEntity } from '../base.entity';
 import { UsersEntity } from '../users/users.entity';
 import { DiscussionsEntity } from './discussions.entity';
@@ -26,7 +26,7 @@ export class DiscussionReactionsEntity extends BaseEntity {
    * @type {DiscussionsEntity}
    * @nullable true
    */
-  @ManyToOne(() => DiscussionsEntity, { nullable: true })
+  @ManyToOne(() => DiscussionsEntity, { nullable: true, cascade: [Cascade.REMOVE] })
   discussion?: DiscussionsEntity;
 
   /**
@@ -35,7 +35,7 @@ export class DiscussionReactionsEntity extends BaseEntity {
    * @type {DiscussionCommentEntity}
    * @nullable true
    */
-  @ManyToOne(() => DiscussionCommentsEntity, { nullable: true })
+  @ManyToOne(() => DiscussionCommentsEntity, { nullable: true, cascade: [Cascade.REMOVE] })
   discussionComment?: DiscussionCommentsEntity;
 
   /**
@@ -43,8 +43,8 @@ export class DiscussionReactionsEntity extends BaseEntity {
    * @description 반응을 남긴 사용자를 참조합니다.
    * @type {UsersEntity}
    */
-  @ManyToOne(() => UsersEntity)
-  user!: UsersEntity;
+  @ManyToOne(() => UsersEntity, { nullable: true })
+  user?: UsersEntity;
 
   /**
    * 반응 타입

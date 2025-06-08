@@ -1,4 +1,4 @@
-import { Check, Entity, Enum, Index, ManyToOne, Property } from '@mikro-orm/core';
+import { Cascade, Check, Entity, Enum, Index, ManyToOne, Property } from '@mikro-orm/core';
 import { SoftDeletableEntity } from '../base.entity';
 import { QuestionSetsEntity } from './question-sets.entity';
 import { QuestionSectionsEntity } from './question-sections.entity';
@@ -26,7 +26,7 @@ export class QuestionsEntity extends SoftDeletableEntity {
    * @type {QuestionSetsEntity}
    * @nullable true
    */
-  @ManyToOne(() => QuestionSetsEntity, { nullable: true })
+  @ManyToOne(() => QuestionSetsEntity, { nullable: true, cascade: [Cascade.REMOVE] })
   questionSet?: QuestionSetsEntity;
 
   /**
@@ -35,7 +35,7 @@ export class QuestionsEntity extends SoftDeletableEntity {
    * @type {QuestionSectionsEntity}
    * @nullable true
    */
-  @ManyToOne(() => QuestionSectionsEntity, { nullable: true })
+  @ManyToOne(() => QuestionSectionsEntity, { nullable: true, cascade: [Cascade.REMOVE] })
   questionSection?: QuestionSectionsEntity;
 
   /**

@@ -33,6 +33,14 @@ export class QuestionsEntity extends SoftDeletableEntity {
   questionSection?: QuestionSectionsEntity;
 
   /**
+   * 문항 번호
+   * @description 문항의 번호입니다.
+   * @type {number}
+   */
+  @Property({ type: 'smallint', fieldName: 'no' })
+  no!: number;
+
+  /**
    * 문항 지문
    * @description 문항의 지문 내용이 담긴 텍스트입니다.
    * @type {string}

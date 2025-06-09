@@ -12,22 +12,16 @@ import { YNEnum } from '../../common/constants/enum';
  * @table questions
  */
 @Entity({ tableName: 'questions' })
-@Check({
-  expression: `(question_set_id IS NOT NULL AND question_section_id IS NULL) OR (question_set_id IS NULL AND question_section_id IS NOT NULL)`,
-  name: 'questions_parent_check',
-})
 @Index({ properties: ['questionSet'] })
 @Index({ properties: ['questionSection'] })
 export class QuestionsEntity extends SoftDeletableEntity {
   /**
-   * 문제 세트 참조 (선택적)
-   * @description 이 문항이 직접 속한 문제 세트를 참조합니다.
-   * 섹션이 없는 경우에만 사용됩니다.
+   * 문제 세트 참조
+   * @description 이 문항이 속한 문제 세트를 참조합니다.
    * @type {QuestionSetsEntity}
-   * @nullable true
    */
-  @ManyToOne(() => QuestionSetsEntity, { nullable: true, cascade: [Cascade.REMOVE] })
-  questionSet?: QuestionSetsEntity;
+  @ManyToOne(() => QuestionSetsEntity, { cascade: [Cascade.REMOVE] })
+  questionSet!: QuestionSetsEntity;
 
   /**
    * 문제 섹션 참조 (선택적)

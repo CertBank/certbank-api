@@ -26,6 +26,7 @@ export class QuestionsSeeder extends Seeder {
     // 새 데이터 삽입
     const questions: any[] = [
       {
+        no: 1,
         content: '<p>데이터 모델링의 특징으로 가장 적절하지 <u>않은</u> 것은?</p>',
         subContentUseYn: YNEnum.NO,
         multipleOptionsUseYn: YNEnum.NO,

@@ -2,6 +2,10 @@ import type { EntityManager } from '@mikro-orm/core';
 import { Seeder } from '@mikro-orm/seeder';
 import { ProvidersEntity } from '../../../entities/providers/providers.entity';
 
+// 🎯 ProvidersEntity에서 자동으로 DTO 생성
+type ProviderEntityFields = EntityToSeed<ProvidersEntity>;
+interface ProviderSeedDto extends ReadonlySeed<ProviderEntityFields> {}
+
 export class ProvidersSeeder extends Seeder {
   async run(em: EntityManager): Promise<void> {
     console.log('🌱 Providers 시딩 시작...');
@@ -11,7 +15,7 @@ export class ProvidersSeeder extends Seeder {
     console.log(`🗑️ ${deleteCount}개의 기존 Provider 삭제 완료`);
 
     // 새 데이터 삽입
-    const providers: any[] = [
+    const providers: ProviderSeedDto[] = [
       {
         providerName: '한국데이터산업진흥원',
         providerDescription:

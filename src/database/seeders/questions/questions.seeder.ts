@@ -4,6 +4,7 @@ import { QuestionsEntity } from '../../../entities/questions/questions.entity';
 import { QuestionSectionsEntity } from '../../../entities/questions/question-sections.entity';
 import { QuestionSetsEntity } from '../../../entities/questions/question-sets.entity';
 import { YNEnum } from '../../../common/constants/enum';
+
 export class QuestionsSeeder extends Seeder {
   async run(em: EntityManager): Promise<void> {
     console.log('🌱 Questions 시딩 시작...');

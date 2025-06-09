@@ -1,4 +1,4 @@
-import { Filter, PrimaryKey, Property } from '@mikro-orm/core';
+import { Filter, OptionalProps, PrimaryKey, Property } from '@mikro-orm/core';
 
 /**
  * 모든 엔티티의 기본 클래스
@@ -7,6 +7,12 @@ import { Filter, PrimaryKey, Property } from '@mikro-orm/core';
  * @abstract
  */
 export abstract class BaseEntity {
+  /**
+   * MikroORM이 자동으로 처리하는 선택적 필드들을 정의
+   * ✅ 핵심: 이 필드들은 Entity 생성 시 선택적으로 처리됨
+   */
+  [OptionalProps]?: 'id' | 'createdAt' | 'updatedAt';
+
   /**
    * 기본 키 (자동 증가)
    * @description PostgreSQL의 SERIAL 타입을 사용하여 자동으로 1부터 순차 증가합니다.

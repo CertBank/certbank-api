@@ -17,6 +17,11 @@ export class QuestionsSeeder extends Seeder {
       setTitle: 'SQLD',
     });
 
+    // 🔥 QuestionSection을 이름으로 미리 조회
+    const sqld_1 = await em.findOne(QuestionSectionsEntity, {
+      sectionTitle: '데이터 모델링의 이해',
+    });
+
     // 새 데이터 삽입
     const questions: any[] = [
       {
@@ -24,6 +29,7 @@ export class QuestionsSeeder extends Seeder {
         subContentUseYn: YNEnum.NO,
         multipleOptionsUseYn: YNEnum.NO,
         questionSet: sqld,
+        questionSection: sqld_1,
       },
     ];
 

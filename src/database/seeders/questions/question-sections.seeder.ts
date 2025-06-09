@@ -2,6 +2,7 @@ import { EntityManager } from '@mikro-orm/core';
 import { Seeder } from '@mikro-orm/seeder';
 import { QuestionSectionsEntity } from '../../../entities/questions/question-sections.entity';
 import { QuestionSetsEntity } from '../../../entities/questions/question-sets.entity';
+
 export class QuestionSectionsSeeder extends Seeder {
   async run(em: EntityManager): Promise<void> {
     console.log('🌱 QuestionSections 시딩 시작...');

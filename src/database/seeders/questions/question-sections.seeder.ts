@@ -3,6 +3,10 @@ import { Seeder } from '@mikro-orm/seeder';
 import { QuestionSectionsEntity } from '../../../entities/questions/question-sections.entity';
 import { QuestionSetsEntity } from '../../../entities/questions/question-sets.entity';
 
+// 🎯 QuestionSectionsEntity에서 자동으로 DTO 생성
+type QuestionSectionEntityFields = EntityToSeed<QuestionSectionsEntity>;
+interface QuestionSectionSeedDto extends ReadonlySeed<QuestionSectionEntityFields> {}
+
 export class QuestionSectionsSeeder extends Seeder {
   async run(em: EntityManager): Promise<void> {
     console.log('🌱 QuestionSections 시딩 시작...');
@@ -12,21 +16,27 @@ export class QuestionSectionsSeeder extends Seeder {
     console.log(`🗑️ ${deleteCount}개 QuestionSection 삭제 완료`);
 
     // 🔥 QuestionSet를 이름으로 미리 조회
+    const setTitle = 'SQLD';
+
     const sqld = await em.findOne(QuestionSetsEntity, {
-      setTitle: 'SQLD',
+      setTitle,
     });
 
+    if (!sqld) {
+      throw new Error(`${setTitle} QuestionSet을 찾을 수 없습니다. QuestionSetsSeeder를 먼저 실행해주세요.`);
+    }
+
     // 새 데이터 삽입
-    const questionSections: any[] = [
+    const questionSections: QuestionSectionSeedDto[] = [
       {
+        questionSet: sqld,
         sectionTitle: '데이터 모델링의 이해',
         sectionOrder: 1,
-        questionSet: sqld,
       },
       {
+        questionSet: sqld,
         sectionTitle: 'SQL 기본 및 활용',
         sectionOrder: 2,
-        questionSet: sqld,
       },
     ];
 

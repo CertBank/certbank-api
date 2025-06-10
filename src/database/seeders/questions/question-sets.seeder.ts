@@ -3,6 +3,10 @@ import { Seeder } from '@mikro-orm/seeder';
 import { QuestionSetsEntity } from '../../../entities/questions/question-sets.entity';
 import { ProvidersEntity } from '../../../entities/providers/providers.entity';
 
+// 🎯 QuestionSetsEntity에서 자동으로 DTO 생성
+type QuestionSetEntityFields = EntityToSeed<QuestionSetsEntity>;
+interface QuestionSetSeedDto extends ReadonlySeed<QuestionSetEntityFields> {}
+
 export class QuestionSetsSeeder extends Seeder {
   async run(em: EntityManager): Promise<void> {
     console.log('🌱 QuestionSets 시딩 시작...');
@@ -12,16 +16,22 @@ export class QuestionSetsSeeder extends Seeder {
     console.log(`🗑️ ${deleteCount}개 QuestionSet 삭제 완료`);
 
     // 🔥 Provider를 이름으로 미리 조회
+    const providerName = '한국데이터산업진흥원';
+
     const kdata = await em.findOne(ProvidersEntity, {
-      providerName: '한국데이터산업진흥원',
+      providerName,
     });
 
+    if (!kdata) {
+      throw new Error(`${providerName} Provider를 찾을 수 없습니다. ProvidersSeeder를 먼저 실행해주세요.`);
+    }
+
     // 새 데이터 삽입
-    const questionSets: any[] = [
+    const questionSets: QuestionSetSeedDto[] = [
       {
+        provider: kdata,
         setTitle: 'SQLD',
         setDescription: '2024년 개정',
-        provider: kdata,
       },
     ];
 
